@@ -7,7 +7,7 @@ try { require('jQuery') } catch (err) { }
 
 $(() => {
 
-    let page = 1, perpage = 10;
+    let page = 1, perpage = 5;
 
     function listOpt() {
         $.ajax({
@@ -91,7 +91,16 @@ $(() => {
 
         stateBtn(newURL.comment_delete, id, function () {
 
-            if (arrObj == 0) {
+            // if (arrObj == 0) {
+            //     if (page > 1) {
+            //         page--;
+            //         listOpt();
+            //     }
+            // } else {
+            //     listOpt();
+            // }
+
+            if ((totalCount % perpage) - 1 == 0) {
                 if (page > 1) {
                     page--;
                     listOpt();
@@ -99,15 +108,6 @@ $(() => {
             } else {
                 listOpt();
             }
-
-            // if ((totalCount - 1) % 10 == 0) {
-            //     if (page > 1) {
-            //         page--;
-            //         listOpt()
-            //     }
-            // } else {
-            //     listOpt();
-            // }
             // console.log(totalCount);
 
             // if ()
