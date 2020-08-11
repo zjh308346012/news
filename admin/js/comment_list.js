@@ -89,16 +89,40 @@ $(() => {
 
         e.preventDefault();
 
+        // $.ajax({
+        //     type: 'post',
+
+        //     url: newURL.comment_delete,
+
+        //     dataType: 'json',
+
+        //     data: { id },
+
+        //     success: (res) => {
+        //         if (res.code == 200) {
+        //             if ((totalCount % perpage) - 1 == 0) {
+        //                 if (page > 1) {
+        //                     page--;
+        //                     listOpt();
+        //                 }
+
+        //             } else {
+        //                 listOpt();
+        //             }
+        //         }
+        //     }
+        // })
+
         stateBtn(newURL.comment_delete, id, function () {
 
-            // if (arrObj == 0) {
-            //     if (page > 1) {
-            //         page--;
-            //         listOpt();
-            //     }
-            // } else {
-            //     listOpt();
-            // }
+            //     // if (arrObj == 0) {
+            //     //     if (page > 1) {
+            //     //         page--;
+            //     //         listOpt();
+            //     //     }
+            //     // } else {
+            //     //     listOpt();
+            //     // }
 
             if ((totalCount % perpage) - 1 == 0) {
                 if (page > 1) {
@@ -110,58 +134,57 @@ $(() => {
             }
             // console.log(totalCount);
 
-            // if ()
+            //     // if ()
 
-            // if ((totalPage.length - 1) == 0) {
-
-
-            //     if (page > 1) {
-            //         console.log(123);
-            //         page--;
-            //         listOpt();
-            //     }
-
-            // } else {
-            //     listOpt();
-            // }
+            //     // if ((totalPage.length - 1) == 0) {
 
 
+            //     //     if (page > 1) {
+            //     //         console.log(123);
+            //     //         page--;
+            //     //         listOpt();
+            //     //     }
+
+            //     // } else {
+            //     //     listOpt();
+            //     // }
+
+
+            // })
+
+
+            // res.data.data.forEach((item) => {
+            // })
         })
 
 
-        // res.data.data.forEach((item) => {
-        // })
+        //封装三个按钮的函数
+        function stateBtn(url, id, callback) {
+
+            $.ajax({
+                type: 'post',
+
+                url: url,
+
+                dataType: 'json',
+
+                data: { id },
+
+                success: (res) => {
+                    console.log(res);
+
+                    alert(res.msg);
+
+                    callback && callback();
+
+                    listOpt();
+
+                }
+            })
+
+        }
+
     })
 
 
-    //封装三个按钮的函数
-    function stateBtn(url, id, callback) {
-
-        $.ajax({
-            type: 'post',
-
-            url: url,
-
-            dataType: 'json',
-
-            data: { id },
-
-            success: (res) => {
-                console.log(res);
-
-                alert(res.msg);
-
-                callback && callback();
-
-                listOpt();
-
-            }
-        })
-
-    }
-
 })
-
-
-
-
